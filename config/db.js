@@ -1,10 +1,10 @@
 import { connect } from 'mongoose';
-import config from 'config';
-const db = config.get('mongoURI');
+import dotenv from 'dotenv';
+dotenv.config();
 
 const connectDB = async () => {
 	try {
-		await connect(db);
+		await connect(process.env.MONGO_URI);
 
 		console.log('MongoDB Connected...');
 	} catch (err) {
